@@ -7,11 +7,30 @@
     <%= f.label :name %><br />
     <%= f.text_field :name, required: true, autofocus: true %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, required: true%>
   </div>
-
+  
+  <div>
+    <%= f.check_box :sex, {}, true %> 
+    <%= f.label :sex, "Female" %>
+  </div>
+  
+  <div>
+    <%= f.check_box :sex, {}, false %> 
+    <%= f.label :sex, "Male" %> 
+  </div> 
+   <div>
+    <%= f.label :sex %><br/>
+    <%= f.select(:sex, [['Male',1],['Female',0]]) %>
+  </div>
+  
+  <div><%= f.label :date_of_birth %><br />
+    <%= f.date_select :date_of_birth %>
+  </div>
+  
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
@@ -23,6 +42,11 @@
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <div>
+    <%= f.label :avatar %><br/>
+    <%= f.file_field :avatar %>
   </div>
 
   <div class="actions">

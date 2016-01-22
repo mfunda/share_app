@@ -1,18 +1,33 @@
-= image_tag @article.image.url(:medium)
-%h2 
-	= @article.title
-%p 
-	=@article.content
-%a 
-	=link_to @article.link
+.article
+	.top-bar
+		.votes
+			= link_to like_article_path(@article), method: :get, class: 'data' do
+				%i.fa.fa-thumbs-o-up
+				= pluralize(@article.get_upvotes.size, 'Like')
+			= link_to dislike_article_path(@article), method: :get, class: 'data' do
+				%i.fa.fa-thumbs-o-down
+				= pluralize(@article.get_downvotes.size, 'Dislike')
+		%span#total-com= pluralize(@article.comments.count, "Comment")
 
 
-- @comments.each do |comment|
-	%p= comment.user.name
-	%p= comment.content
-= render 'comments/form'
+	= image_tag @article.image.url(:medium)
+	%h2 
+		= @article.title
+	%h5
+		Added by
+		%span= link_to @article.user.name, user_path(@article.user)
+		= time_ago_in_words(@article.created_at)
+	%p 
+		=@article.content
+	%a 
+		Link to source
+		=link_to @article.link
 
 - if @article.user == current_user
 	=link_to 'Edit', edit_article_path(@article)
 	=link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure ?"}
-= link_to 'Back', root_path
+= link_to 'Back', :back
+= render 'comments/form'
+- @comments.each do |comment|
+	%p= comment.user.name
+	%p= comment.content

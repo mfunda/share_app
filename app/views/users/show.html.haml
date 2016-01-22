@@ -1,0 +1,26 @@
+%h1
+	= @user.name + '\'s'
+	profile
+
+.profile
+	.profile-img
+		= image_tag @user.avatar.url(:medium)
+
+	%p
+		Name:
+		= @user.name
+	%p
+		Email:
+		= @user.email
+	%p
+		Date of birth:
+		= @user.date_of_birth
+	%p
+		Sex:
+		= @user.set_sex
+	%p
+		= pluralize(@user.articles.count, "Article")
+
+	- if @user == current_user
+		=link_to 'Edit', edit_user_registration_path
+	= link_to 'Back', :back

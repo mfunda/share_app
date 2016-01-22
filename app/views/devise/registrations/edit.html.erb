@@ -2,13 +2,24 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
 <%= devise_error_messages! %>
-  <div class="field">
+   <div class="field">
     <%= f.label :name %><br />
-    <%= f.email_field :name, autofocus: true %>
+    <%= f.text_field :name, required: true, autofocus: true %>
   </div>
+
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, required: true%>
+  </div>
+  
+  <div>
+    <%= f.label :sex %><br/>
+    <%= f.select(:sex, [['Male',1],['Female',0]]) %>
+  </div>
+  
+  
+  <div><%= f.label :date_of_birth %><br />
+    <%= f.date_select :date_of_birth %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -29,7 +40,11 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
-
+  <div>
+    <%= f.label :avatar %><br/>
+    <%= f.file_field :avatar %>
+  </div>
+  <br/>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>

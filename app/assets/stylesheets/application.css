@@ -1,0 +1,203 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+html,body {
+	font-family: ubuntu;
+	margin: 0;
+	padding: 0;
+}
+
+.container {
+	max-width: 75%;
+	margin: auto;
+}
+
+header {
+	border-bottom: 1px solid #E0E0E0;
+	text-align: right;
+	margin: 0;
+	padding: 1.5rem 0;
+	width: 100%;
+}
+
+#logo img{
+	float: left;
+	height: 4rem;
+	width: 7rem;
+	margin: auto 10rem;
+}
+
+nav a {
+	font-size: 1rem;
+	color: #0066CC;
+	text-decoration: none;
+	
+	padding: .5rem 1rem;
+	border-radius: 10px;
+	display: inline-block;
+}
+
+nav a:hover {
+	background-color: #0080FF;
+	color: #fff;
+}
+
+.intro {
+	background-color: #F0F0F0;
+	border-radius: 10px;
+	border: 1px solid #E0E0E0;
+	margin: 2rem 4rem;
+}
+
+.intro h1 {
+	margin: 2rem 5rem;
+	color: #004C99;
+	font-size: 3rem;
+}
+
+.intro p {
+	font-size: 1.5rem;
+	margin: 3rem 5rem;
+	color: #004C99;
+}
+
+#btn-wrt {
+	margin: 1.5rem 11rem;
+	padding: 1rem 1.5rem;
+	background-color: #0080FF;
+	border: 1px solid #004C99;
+	display: inline-block;
+	border-radius: 10px;
+}
+
+#btn-wrt:hover {
+	background-color: #004C99;
+}
+#btn-wrt a {
+	text-decoration: none;
+	color: #fff;
+}
+
+#btn-info {
+	margin: 0 10rem;
+}
+
+.content {
+	border-top: 1px solid #E0E0E0;
+	margin: 1rem 0;
+	height: 100%;
+}
+
+footer {
+	border-top: 1px solid #E0E0E0;
+	clear: both;
+	padding: 1rem 0;
+}
+
+.col-3 {
+	float: left;
+	width: 30%;
+	margin: 1rem 1.5%;
+	border: 1px solid #E4E4E4;
+	border-radius: 0.3rem;
+	display: inline-block;
+}
+
+.imgage {
+	overflow: hidden;
+	height: 200px;
+}
+.image img {
+	height: 220px;
+	width: 100%;
+	border-radius: .3rem .3rem 0 0;
+}
+.caption {
+	height: 5rem;
+}
+.caption a {
+	color: #004C99;
+	text-decoration: none;
+	margin: .5rem;
+}
+
+.caption p {
+	margin: .5rem;
+}
+
+#alrt {
+	text-align: center;
+	color: #004C99;
+}
+
+.article img {
+	width: 100%;
+}
+
+.article h2 {
+	text-align: center;
+	font-size: 2rem;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #E0E0E0;
+}
+
+.article p {
+	margin: 1rem auto;
+	width: 98%;
+}
+
+.article a {
+	margin: 1rem .2rem;
+}
+
+.article span a{
+	color: #004C99;
+	text-decoration: none;
+}
+
+
+.votes a{
+	text-decoration: none;
+	color: #555555;
+	float: left;
+	margin:.4rem 1rem;
+}
+
+#total-com {
+	color: #555555;
+	float: right;
+}
+
+.next_page, .previous_page {
+	color: #fff;
+	background-color: #0080FF;
+	padding: 0.2rem;
+	border-radius: .4rem;
+	text-decoration: none;
+	margin: 0 .5rem;
+}
+
+.disabled {
+	display: none;
+}
+.pagination {
+	text-align: center;
+	clear: both;
+}
+
+.caption {
+	font-size: .8rem;
+}

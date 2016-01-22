@@ -1,10 +1,10 @@
 class ArticlesController < ApplicationController
 
-	before_action :find_article, only: [:show, :edit, :update, :destroy]
+	before_action :find_article, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 	before_action :authenticate_user!, except: [:index, :show]
 	
 	def index
-		@articles = Article.all
+		@articles = Article.paginate(:per_page => 9, :page => params[:page]).all.order("created_at DESC")
 	end
 
 	def new
@@ -25,6 +25,16 @@ class ArticlesController < ApplicationController
 		else
 			render 'new'
 		end
+	end
+
+	def upvote
+		@article.upvote_by current_user
+		redirect_to :back
+	end
+
+	def downvote
+		@article.downvote_from current_user
+		redirect_to :back
 	end
 
 	def update

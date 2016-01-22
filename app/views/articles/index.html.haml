@@ -1,11 +1,29 @@
-%p Welcome to my new app :)
-
-- @articles.each do |article|
-	= link_to (image_tag article.image.url(:thumb)), article
-	%h2= link_to article.title, article
-	%p
-		Shared by
-		= article.user.name
-		about
-		= time_ago_in_words(article.created_at)
-
+.intro
+	%h1 Welcome to Share App
+	%p Write your articles and share with others !
+	- if user_signed_in?
+		%p#btn-info Write an aritcle !
+		#btn-wrt= link_to 'New article', new_article_path
+	- else
+		%p#btn-info Sign up for free and write you first article !
+		#btn-wrt= link_to 'Sign Up', new_user_registration_path
+.content
+	.articles			
+		- @articles.each do |article|
+			.col-3
+				.image= link_to (image_tag article.image.url(:thumb)), article
+				.caption
+					%h2= link_to article.title, article
+					= link_to like_article_path(article), method: :get, class: 'data' do
+						%i.fa.fa-thumbs-o-up
+						= pluralize(article.get_upvotes.size, 'Like')
+					= link_to dislike_article_path(article), method: :get, class: 'data' do
+						%i.fa.fa-thumbs-o-down
+						= pluralize(article.get_downvotes.size, 'Dislike')
+					%span#total-com= pluralize(article.comments.count, "Comment")
+					%p
+						Shared by
+						= article.user.name
+						about
+						= time_ago_in_words(article.created_at)
+	= will_paginate @articles
