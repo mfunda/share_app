@@ -1,0 +1,18 @@
+= image_tag @article.image.url(:medium)
+%h2 
+	= @article.title
+%p 
+	=@article.content
+%a 
+	=link_to @article.link
+
+
+- @comments.each do |comment|
+	%p= comment.user.name
+	%p= comment.content
+= render 'comments/form'
+
+- if @article.user == current_user
+	=link_to 'Edit', edit_article_path(@article)
+	=link_to 'Delete', article_path(@article), method: :delete, data: {confirm: "Are you sure ?"}
+= link_to 'Back', root_path
