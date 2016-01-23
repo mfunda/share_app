@@ -13,6 +13,7 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'will_paginate', '~> 3.0.6'
 gem 'simple_form', '~> 3.2', '>= 3.2.1'
+gem 'acts_as_follower'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do

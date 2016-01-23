@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
     has_attached_file :avatar, styles: { medium: "550x350#", thumb: "250x200>" }, default_url: "missing.png"
   	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+	acts_as_followable
+	acts_as_follower
+
   	def set_sex
   		@user = User.find(self.id)
   		if @user.sex == true

@@ -20,7 +20,20 @@
 		= @user.set_sex
 	%p
 		= pluralize(@user.articles.count, "Article")
+	%p
+		Follows
+		= pluralize(@user.follow_count, "User")
+	%p
+		Followed by
+		= pluralize(@user.followers_count, "Users")
+
 
 	- if @user == current_user
 		=link_to 'Edit', edit_user_registration_path
+	-else
+		-if current_user.following?(@user)
+			= link_to 'Unfollow', unfollow_user_path(@user)
+		-else
+			= link_to 'Follow', follow_user_path(@user)
+
 	= link_to 'Back', :back
